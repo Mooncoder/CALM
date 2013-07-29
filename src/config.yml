@@ -1,0 +1,12 @@
+version: 0.0.0.0
+
+filters:
+  # name: (any valid and unique yaml string to identify this filter)
+	#  method: (exact, simple, regular expression)
+  #  pattern:
+  #  to-console:
+  #  log-path:
+  #  replace-string:
+  #  replace-tokens:
+  #		-
+  #		-
