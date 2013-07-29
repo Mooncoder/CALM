@@ -2,6 +2,8 @@ package org.ruhlendavis.mc.calm;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Filter;
+import java.util.logging.Logger;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -23,6 +25,7 @@ public final class Calm extends JavaPlugin
 	@Override
   public void onEnable()
 	{
+		Logger.getLogger("Minecraft").setFilter(new LoggingFilter());
 		// For use in onDisable();
 		instance = this;
 	}
@@ -34,6 +37,12 @@ public final class Calm extends JavaPlugin
 	@Override
 	public void onDisable()
 	{
+		Filter filter = Logger.getLogger("Minecraft").getFilter();
+		
+		if (filter != null && filter instanceof CalmFilter)
+		{
+			Logger.getLogger("Minecraft").setFilter(null);
+		}
 		// This should be the last thing we do.
 		instance = null;
 	}
