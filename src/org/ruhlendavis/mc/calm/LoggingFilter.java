@@ -18,6 +18,39 @@ public class LoggingFilter implements Filter
 	@Override
 	public boolean isLoggable(LogRecord record)
 	{
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		String message = record.getMessage();
+
+		for (CalmFilter filter : Calm.filters)
+		{
+			String pattern = filter.getPattern();
+			switch (filter.getMethod())
+			{
+				case EXACT:
+					if (message.equals(pattern))
+					{
+						if (filter.isToConsole())
+						{
+							continue;
+						}
+						return false;
+					}
+					break;
+				case SIMPLE:
+					if (message.contains(pattern))
+					{
+						if (filter.isToConsole())
+						{
+							continue;
+						}
+						return false;
+					}
+					break;
+				case WILDCARD:
+					break;
+				case REGEX:
+					break;
+			}
+		}
+		return true;
 	}
 }

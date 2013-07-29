@@ -1,5 +1,7 @@
 package org.ruhlendavis.mc.calm;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -11,6 +13,8 @@ public final class Calm extends JavaPlugin
 {
 	@SuppressWarnings("PMD.UnusedPrivateField")
 	private static Calm instance;
+	
+	public static List<CalmFilter> filters = new ArrayList<>();
 	
 	/**
 	 * onEnable triggered by Bukkit to handle any setup the plugin needs.
