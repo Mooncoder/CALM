@@ -29,6 +29,11 @@ public class CalmCommandExecutor implements CommandExecutor
 		// where the arguments start.
 		if (commandName.equals("calm"))
 		{
+			if (arguments.length == 0)
+			{
+				// spit out generic stuff here
+				return true;
+			}
 			commandName = arguments[argumentStart];
 			argumentStart++;
 		}
@@ -43,7 +48,7 @@ public class CalmCommandExecutor implements CommandExecutor
 		
 		if (commandName.equals("reload"))
 		{
-			onReloadConfig();
+			onReloadConfig(sender);
 		}
 		
 		return true;
@@ -51,7 +56,8 @@ public class CalmCommandExecutor implements CommandExecutor
 	/**
 	 *  Response to the calm reload command.
 	 */
-	private void onReloadConfig()
+	private void onReloadConfig(CommandSender sender)
 	{
+		sender.sendMessage("It might reload...if there were code to reload.");
 	}
 }
