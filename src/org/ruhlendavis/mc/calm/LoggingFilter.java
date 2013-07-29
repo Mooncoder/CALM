@@ -10,6 +10,11 @@ import java.util.logging.LogRecord;
  */
 public class LoggingFilter implements Filter
 {
+	public LoggingFilter()
+	{
+		super();
+	}
+		
 	@Override
 	public boolean isLoggable(LogRecord record)
 	{
