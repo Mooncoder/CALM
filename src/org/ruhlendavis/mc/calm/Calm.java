@@ -10,4 +10,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class Calm extends JavaPlugin
 {
 
+	/**
+	 * onDisable triggered by Bukkit to handle any cleanup the plugin needs when
+	 * disabling.
+	 */
+	@Override
+	public void onDisable()
+	{
+	}
 }
