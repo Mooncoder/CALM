@@ -6,5 +6,11 @@ description: 'C.A.L.M.: Console And Log Management'
 main: org.ruhlendavis.mc.calm.Calm
 
 commands:
+  calm:
+    description: Gateway to all Calm commands.
+  calmreload:
+    description: Reloads Calm's configuration from disk.
+    permission: calm.reload
+    permission-message: "§cYou do not have access to that command."
 
 permissions:
