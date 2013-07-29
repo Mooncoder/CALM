@@ -1,7 +1,7 @@
 name: Calm
 version: 0.0.0.1
 author: Feaelin <feaelin@kemenel.org>
-description: Console and Log Management
+description: 'C.A.L.M.: Console And Log Management'
 
 main: org.ruhlendavis.calm.Calm
 
