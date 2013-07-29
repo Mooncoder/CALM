@@ -2,6 +2,8 @@ package org.ruhlendavis.mc.calm;
 
 import java.util.logging.Filter;
 import java.util.logging.LogRecord;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * This is the key class for log filtering.
@@ -22,11 +24,11 @@ public class LoggingFilter implements Filter
 
 		for (CalmFilter filter : Calm.config.filters)
 		{
-			String pattern = filter.getPattern();
+			String patternString = filter.getPatternString();
 			switch (filter.getMethod())
 			{
 				case EXACT:
-					if (message.equals(pattern))
+					if (message.equals(patternString))
 					{
 						if (filter.isToConsole())
 						{
@@ -36,7 +38,7 @@ public class LoggingFilter implements Filter
 					}
 					break;
 				case SIMPLE:
-					if (message.contains(pattern))
+					if (message.contains(patternString))
 					{
 						if (filter.isToConsole())
 						{
@@ -48,6 +50,19 @@ public class LoggingFilter implements Filter
 				case WILDCARD:
 					break;
 				case REGEX:
+					Pattern pattern = filter.getPattern();
+					if (pattern != null)
+					{
+						Matcher matcher = pattern.matcher(message);
+						if (matcher.find())
+						{
+							if (filter.isToConsole())
+							{
+								continue;
+							}
+							return false;
+						}
+					}
 					break;
 			}
 		}

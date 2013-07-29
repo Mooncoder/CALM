@@ -3,6 +3,7 @@ package org.ruhlendavis.mc.calm;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.regex.PatternSyntaxException;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -54,17 +55,24 @@ public final class Configuration
 			
 			List<String> replaceTokens = config.getStringList(path + "replace-tokens");
 
-			CalmFilter filter = new CalmFilter(
-							filterName,
-							method,
-							config.getString(path + "pattern", ""),
-							config.getBoolean(path + "to-console", true),
-							config.getBoolean(path + "to-standard-log", true),
-							config.getString(path + "log-path", ""),
-							config.getString(path + "replace-string", ""),
-							replaceTokens
-							);
-			filters.add(filter);
+			try
+			{
+				CalmFilter filter = new CalmFilter(
+								filterName,
+								method,
+								config.getString(path + "pattern", ""),
+								config.getBoolean(path + "to-console", true),
+								config.getBoolean(path + "to-standard-log", true),
+								config.getString(path + "log-path", ""),
+								config.getString(path + "replace-string", ""),
+								replaceTokens
+								);
+				filters.add(filter);
+			}
+			catch (PatternSyntaxException exception)
+			{
+				// TODO: notify user of bad regexp.
+			}
 		}
 	}
 }

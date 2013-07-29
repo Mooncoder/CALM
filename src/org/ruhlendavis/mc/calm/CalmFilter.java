@@ -1,6 +1,8 @@
 package org.ruhlendavis.mc.calm;
 
 import java.util.List;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 /**
  * This is our filter definition.
@@ -11,7 +13,8 @@ public class CalmFilter
 {
 	private String				name;
 	private MatchMethod		method;
-	private String				pattern;
+	private String				patternString;
+	private Pattern				pattern;
 	private boolean				toConsole;
 	private boolean				toStandardLog;
 	private String				logPath;
@@ -22,11 +25,10 @@ public class CalmFilter
 	{
 	}
 	
-	CalmFilter(String name, MatchMethod method, String pattern, boolean toConsole, boolean toStandardLog, String logPath, String replaceString, List<String> replaceTokens)
+	CalmFilter(String name, MatchMethod method, String patternString, boolean toConsole, boolean toStandardLog, String logPath, String replaceString, List<String> replaceTokens) throws PatternSyntaxException
 	{
 		this.name = name;
-		this.method = method;
-		this.pattern = pattern;
+		setMatching(patternString, method);
 		this.toConsole = toConsole;
 		this.toStandardLog = toStandardLog;
 		this.logPath = logPath;
@@ -59,19 +61,36 @@ public class CalmFilter
 	}
 
 	/**
-	 * @param method the method to set
+	 * @return the pattern
 	 */
-	public void setMethod(MatchMethod method)
+	public String getPatternString()
 	{
-		this.method = method;
+		return patternString;
 	}
 
 	/**
 	 * @return the pattern
 	 */
-	public String getPattern()
+	public Pattern getPattern()
 	{
 		return pattern;
+	}
+
+	/**
+	 * @param method the method to set
+	 */
+	public final void setMatching(String patternString, MatchMethod method) throws PatternSyntaxException
+	{
+		this.method = method;
+		this.patternString = patternString;
+		if (this.method == MatchMethod.REGEX)
+		{
+			this.pattern = Pattern.compile(patternString);
+		}
+		else
+		{
+			this.pattern = null;
+		}
 	}
 
 	/**
@@ -79,7 +98,8 @@ public class CalmFilter
 	 */
 	public void setPattern(String pattern)
 	{
-		this.pattern = pattern;
+		this.patternString = pattern;
+		
 	}
 
 	/**
