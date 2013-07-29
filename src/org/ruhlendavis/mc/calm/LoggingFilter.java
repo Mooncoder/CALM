@@ -4,8 +4,9 @@ import java.util.logging.Filter;
 import java.util.logging.LogRecord;
 
 /**
- *
- * @author Iain E. Davis <iain@ruhlendavis.org>
+ * This is the key class for log filtering.
+ * 
+ * @author Feaelin (Iain E. Davis) <iain@ruhlendavis.org>
  */
 public class LoggingFilter implements Filter
 {
