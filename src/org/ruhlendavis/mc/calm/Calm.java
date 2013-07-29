@@ -25,6 +25,9 @@ public final class Calm extends JavaPlugin
 	@Override
   public void onEnable()
 	{
+		getCommand("calm").setExecutor(new CalmCommandExecutor());
+		getCommand("calmreload").setExecutor(new CalmCommandExecutor());
+
 		Logger.getLogger("Minecraft").setFilter(new LoggingFilter());
 		// For use in onDisable();
 		instance = this;
