@@ -1,9 +1,9 @@
 name: Calm
-version: 0.0.0.1
+version: 0.0.0.4
 author: Feaelin <feaelin@kemenel.org>
 description: 'C.A.L.M.: Console And Log Management'
 
-main: org.ruhlendavis.calm.Calm
+main: org.ruhlendavis.mc.calm.Calm
 
 commands:
 
