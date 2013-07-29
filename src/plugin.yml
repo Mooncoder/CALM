@@ -1,0 +1,10 @@
+name: Calm
+version: 0.0.0.0
+author: Feaelin <feaelin@kemenel.org>
+description: Console and Log Management
+
+main: org.ruhlendavis.calm.Calm
+
+commands:
+
+permissions:
