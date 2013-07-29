@@ -1,9 +1,8 @@
 package org.ruhlendavis.mc.calm;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Filter;
 import java.util.logging.Logger;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -13,24 +12,25 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public final class Calm extends JavaPlugin
 {
-	@SuppressWarnings("PMD.UnusedPrivateField")
+	public static Configuration config;
+
 	private static Calm instance;
-	
-	public static List<CalmFilter> filters = new ArrayList<>();
-	
-	/**
+
+  /**
 	 * onEnable triggered by Bukkit to handle any setup the plugin needs.
 	 *
 	 */
 	@Override
   public void onEnable()
 	{
+		Bukkit.getLogger().setFilter(new LoggingFilter());
+		// For use in onDisable();
+		instance = this;
+		config = new Configuration(instance);
+		
 		getCommand("calm").setExecutor(new CalmCommandExecutor());
 		getCommand("calmreload").setExecutor(new CalmCommandExecutor());
 
-		Logger.getLogger("Minecraft").setFilter(new LoggingFilter());
-		// For use in onDisable();
-		instance = this;
 	}
 	
 	/**

@@ -1,12 +1,11 @@
-version: 0.0.0.0
+version: 0.0.0.24
 
 filters:
-  # name: (any valid and unique yaml string to identify this filter)
-	#  method: (exact, simple, regular expression)
-  #  pattern:
-  #  to-console:
-  #  log-path:
-  #  replace-string:
-  #  replace-tokens:
-  #		-
-  #		-
+  preparinglevel:
+    method: simple
+    pattern: Preparing level
+    to-console: false
+    to-standard-log: false
+    log-path: ''
+    replace-string: ''
+    replace-tokens: ''

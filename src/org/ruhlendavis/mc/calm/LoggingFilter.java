@@ -20,7 +20,7 @@ public class LoggingFilter implements Filter
 	{
 		String message = record.getMessage();
 
-		for (CalmFilter filter : Calm.filters)
+		for (CalmFilter filter : Calm.config.filters)
 		{
 			String pattern = filter.getPattern();
 			switch (filter.getMethod())

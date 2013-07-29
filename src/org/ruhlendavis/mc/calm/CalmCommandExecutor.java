@@ -58,6 +58,7 @@ public class CalmCommandExecutor implements CommandExecutor
 	 */
 	private void onReloadConfig(CommandSender sender)
 	{
-		sender.sendMessage("It might reload...if there were code to reload.");
+		Calm.config.load();
+		sender.sendMessage("reloaded.");
 	}
 }
