@@ -5,18 +5,13 @@ import java.util.logging.LogRecord;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * This is the key class for log filtering.
- * 
- * @author Feaelin (Iain E. Davis) <iain@ruhlendavis.org>
- */
 public class LoggingFilter implements Filter
 {
 	public LoggingFilter()
 	{
 		super();
 	}
-		
+
 	@Override
 	public boolean isLoggable(LogRecord record)
 	{

@@ -7,16 +7,12 @@ import java.util.regex.PatternSyntaxException;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 
-/**
- *
- * @author Iain E. Davis <iain@ruhlendavis.org>
- */
-public final class Configuration
+public class Configuration
 {
 	public List<CalmFilter> filters = new ArrayList<>();
 
 	private Calm plugin;
-	
+
 	public Configuration(Calm plugin)
 	{
 		this.plugin = plugin;
@@ -24,20 +20,17 @@ public final class Configuration
 		load();
 	}
 	
-	/**
-	 * Read the configuration options from config.yml.
-	 */
 	public void load()
 	{
 		FileConfiguration config = plugin.getConfig();
 
 		ConfigurationSection filterSection = config.getConfigurationSection("filters");
-		
+
 		if (filterSection == null)
 		{
 			return;
 		}
-		
+
 		Set<String> filterNames = filterSection.getKeys(false);
 
 		for (String filterName : filterNames)
@@ -52,7 +45,7 @@ public final class Configuration
 			{
 				method = MatchMethod.EXACT;
 			}
-			
+
 			List<String> replaceTokens = config.getStringList(path + "replace-tokens");
 
 			try
