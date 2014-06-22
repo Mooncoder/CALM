@@ -42,8 +42,6 @@ public class LoggingFilter implements Filter
 						return false;
 					}
 					break;
-				case WILDCARD:
-					break;
 				case REGEX:
 					Pattern pattern = filter.getPattern();
 					if (pattern != null)

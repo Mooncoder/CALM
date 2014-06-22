@@ -4,6 +4,5 @@ public enum MatchMethod
 {
 	EXACT,
 	REGEX,
-	SIMPLE,
-	WILDCARD,
+	SIMPLE
 }

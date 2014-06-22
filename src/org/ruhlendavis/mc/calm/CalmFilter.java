@@ -60,7 +60,7 @@ public class CalmFilter
 	{
 		this.method = method;
 		this.patternString = patternString;
-		if (this.method == MatchMethod.REGEX)
+		if (method == MatchMethod.REGEX)
 		{
 			this.pattern = Pattern.compile(patternString);
 		}
