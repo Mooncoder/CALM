@@ -12,7 +12,7 @@ public final class Calm extends JavaPlugin
 	private static Calm instance;
 
 	@Override
-  public void onEnable()
+         public void onEnable()
 	{
 		Bukkit.getLogger().setFilter(new LoggingFilter());
 		// For use in onDisable();
